@@ -17,7 +17,7 @@
         "no-var": 2,
         "object-curly-newline": ["error", {
             "ImportDeclaration": {
-                "minProperties": 2,
+                "minProperties": 3,
                 "consistent": false,
                 "multiline": true
             }
