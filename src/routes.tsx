@@ -5,17 +5,17 @@ export const routes = [
         isExact: true,
         path: '/',
         name: 'Home',
-        component: 'Home',
+        component: 'Home'
     },
     {
         path: '/',
         name: 'Test',
-        component: SignUp,
+        component: SignUp
     },
     {
         path: '/profile',
         name: 'Profile',
         component: 'Profile',
-        isPrivate: true,
-    },
+        isPrivate: true
+    }
 ];

@@ -16,12 +16,9 @@
     "rules": {
         "no-var": 2,
         "object-curly-newline": ["error", {
-            "ImportDeclaration": {
-                "minProperties": 3,
-                "consistent": false,
-                "multiline": true
-            }
-        }]
+            "ImportDeclaration": "never"
+        }],
+        "arrow-body-style": ["error", "as-needed"]
     },
     "settings": {
         "react": {
