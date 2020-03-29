@@ -1,11 +1,13 @@
-import { Notifications, GET_NOTIFICATION, SET_NOTIFICATION, NotificationsTypes } from './types';
+import {
+    Notifications,
+    NotificationsTypes,
+    notificationState,
+    GET_NOTIFICATION,
+    SET_NOTIFICATION,
+    CLEAR_NOTIFICATION
+} from './types';
 
-const initialState: Notifications = {
-    type: null,
-    message: ''
-};
-
-export const notificationReducer = (state = initialState, action: NotificationsTypes): Notifications => {
+export const notificationReducer = (state = notificationState, action: NotificationsTypes): Notifications => {
     switch (action.type) {
         case SET_NOTIFICATION:
             return {
@@ -17,6 +19,8 @@ export const notificationReducer = (state = initialState, action: NotificationsT
             return {
                 ...state
             };
+        case CLEAR_NOTIFICATION:
+            return state;
         default:
             return state;
     }

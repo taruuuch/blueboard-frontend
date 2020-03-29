@@ -1,4 +1,4 @@
 import React from 'react';
-import './notification';
+import './notification.scss';
 
 export const Notification = () => <>123</>;

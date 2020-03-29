@@ -1,16 +1,23 @@
 export const SET_NOTIFICATION = 'SET_NOTIFICATION';
 export const GET_NOTIFICATION = 'GET_NOTIFICATION';
+export const CLEAR_NOTIFICATION = 'CLEAR_NOTIFICATION';
 
 enum NotificationType {
-    SUCCESS,
-    WARNING,
-    ERROR
+    'DEFAULT',
+    'SUCCESS',
+    'WARNING',
+    'ERROR'
 }
 
 export interface Notifications {
     message: string;
-    type: NotificationType | null;
+    type: NotificationType;
 }
+
+export const notificationState: Notifications = {
+    type: NotificationType.DEFAULT,
+    message: ''
+};
 
 interface SetNotificationAction {
     type: typeof SET_NOTIFICATION;
@@ -21,4 +28,8 @@ interface GetNotificationAction {
     type: typeof GET_NOTIFICATION;
 }
 
-export type NotificationsTypes = SetNotificationAction | GetNotificationAction;
+interface ClearNotificationAction {
+    type: typeof CLEAR_NOTIFICATION;
+}
+
+export type NotificationsTypes = SetNotificationAction | GetNotificationAction | ClearNotificationAction;
