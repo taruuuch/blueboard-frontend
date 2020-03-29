@@ -1,12 +1,26 @@
 import { apiClient } from './apiClient';
-import { SIGN_IN_URI, SIGN_UP_URI, VERIFY_URI } from '../config';
+import { SIGN_IN_URI, SIGN_UP_URI, VERIFY_URI } from '../configs/apiConfig';
 
-class AuthApi {
-    signIn = async (data: object): Promise<object> => await apiClient.post(SIGN_IN_URI, data);
+class Auth {
+    signInUri: string;
+    signUpUri: string;
+    verifyAccessUri: string;
 
-    signUp = async (data: object): Promise<object> => await apiClient.post(SIGN_UP_URI, data);
+    constructor() {
+        this.signInUri = SIGN_IN_URI;
+        this.signUpUri = SIGN_UP_URI;
+        this.verifyAccessUri = VERIFY_URI;
+    }
 
-    verifyAccess = async (data: object): Promise<object> => await apiClient.post(VERIFY_URI, data);
+    signIn = async (data: object): Promise<object> => await apiClient.post(this.signInUri, data);
+
+    signUp = async (data: object): Promise<object> => await apiClient.post(this.signUpUri, data);
+
+    verifyAccess = async (data: object): Promise<object> => await apiClient.post(this.verifyAccessUri, data);
+
+    setJWT = (jwt: object): void => localStorage.setItem('token', JSON.stringify(jwt));
+
+    getJWT = (): string => JSON.parse(localStorage.getItem('token') || '');
 }
 
-export const authAPI = new AuthApi();
+export const authAPI = new Auth();

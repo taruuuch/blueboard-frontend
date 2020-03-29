@@ -27,19 +27,6 @@ export const clearErrorsAction = (): AuthTypes => ({
     type: CLEAR_ERRORS
 });
 
-export const signInAction = (email: string) => (dispatch: any) => {
-    dispatch(authRequestAction());
-
-    authAPI
-        .signIn({ email })
-        .then(() => {
-            dispatch(authSuccessAction());
-        })
-        .catch((err) => {
-            dispatch(authFailAction(err));
-        });
-};
-
 export const signUpAction = (email: string) => (dispatch: any) => {
     dispatch(authRequestAction());
 
@@ -53,13 +40,29 @@ export const signUpAction = (email: string) => (dispatch: any) => {
         });
 };
 
+export const signInAction = (email: string) => (dispatch: any) => {
+    dispatch(authRequestAction());
+
+    authAPI
+        .signIn({ email })
+        .then(() => {
+            dispatch(authSuccessAction());
+        })
+        .catch((err) => {
+            dispatch(authFailAction(err));
+            // todo: change this after change backend api
+            dispatch(signUpAction(email));
+        });
+};
+
 export const verifyAccessAction = (creadentials: AuthCredentials) => (dispatch: any) => {
     dispatch(authRequestAction());
 
     authAPI
         .verifyAccess(creadentials)
-        .then(() => {
+        .then(({ data }: any) => {
             dispatch(authSuccessAction());
+            authAPI.setJWT(data);
         })
         .catch((err) => {
             dispatch(authFailAction(err));

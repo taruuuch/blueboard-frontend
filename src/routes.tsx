@@ -1,5 +1,3 @@
-import { SignUp } from './containers';
-
 export const routes = [
     {
         isExact: true,
@@ -10,7 +8,7 @@ export const routes = [
     {
         path: '/',
         name: 'Test',
-        component: SignUp
+        component: 'Test'
     },
     {
         path: '/profile',
