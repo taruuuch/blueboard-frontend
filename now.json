@@ -1,5 +1,5 @@
 {
     "env": {
-        "REACT_APP_API_URI": "@REACT_APP_API_URI"
+        "REACT_APP_API_URI": "@react_app_api_uri"
     }
 }
