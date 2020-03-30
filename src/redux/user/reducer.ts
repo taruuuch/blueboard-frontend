@@ -1,31 +1,30 @@
 import {
-    Authentication,
-    AuthTypes,
-    authState,
-    AUTH_REQUEST,
-    AUTH_SUCCESS,
-    AUTH_FAIL,
+    userState,
+    User,
+    UserTypes,
+    USER_REQUEST,
+    USER_SUCCESS,
+    USER_FAIL,
     CLEAR_ERRORS
 } from './types';
 
-export const authReducer = (state = authState, action: AuthTypes): Authentication => {
+export const userReducer = (state = userState, action: UserTypes): User => {
     switch (action.type) {
-        case AUTH_REQUEST:
+        case USER_REQUEST:
             return {
                 ...state,
                 isLoading: true
             };
-        case AUTH_SUCCESS:
+        case USER_SUCCESS:
             return {
                 ...state,
                 isLoading: false,
-                isAuthentication: true
+                currentProfile: action.payload.currentProfile
             };
-        case AUTH_FAIL:
+        case USER_FAIL:
             return {
                 ...state,
                 isLoading: false,
-                isAuthentication: false,
                 errors: action.payload.errors
             };
         case CLEAR_ERRORS:

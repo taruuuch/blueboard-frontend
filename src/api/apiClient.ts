@@ -1,5 +1,6 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
-import { /*baseURL,*/ timeout } from '../configs/apiConfig';
+import { timeout } from '../configs/apiConfig';
+import { authAPI } from './Auth';
 
 const config: AxiosRequestConfig = {
     // baseURL,
@@ -12,9 +13,9 @@ const config: AxiosRequestConfig = {
 
 export const apiClient: AxiosInstance = axios.create(config);
 
-axios.interceptors.request.use(
-    (param: AxiosRequestConfig) => {
-        const token = 'get token here!';
+apiClient.interceptors.request.use(
+    async (param: AxiosRequestConfig) => {
+        const token = authAPI.getJWT().accessToken;
 
         if (token) {
             param.headers.Authorization = `Bearer ${token}`;

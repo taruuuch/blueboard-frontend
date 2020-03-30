@@ -21,11 +21,6 @@ export interface AuthCredentials {
     password: string;
 }
 
-interface AuthAction {
-    type: typeof AUTH;
-    payload: Authentication;
-}
-
 interface AuthRequestAction {
     type: typeof AUTH_REQUEST;
 }
@@ -43,4 +38,4 @@ interface ClearErrorsAction {
     type: typeof CLEAR_ERRORS;
 }
 
-export type AuthTypes = AuthAction | AuthRequestAction | AuthSuccessAction | AuthFailAction | ClearErrorsAction;
+export type AuthTypes = AuthRequestAction | AuthSuccessAction | AuthFailAction | ClearErrorsAction;

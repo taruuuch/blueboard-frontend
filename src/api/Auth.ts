@@ -1,6 +1,11 @@
 import { apiClient } from './apiClient';
 import { SIGN_IN_URI, SIGN_UP_URI, VERIFY_URI } from '../configs/apiConfig';
 
+interface JWT {
+    accessToken: string;
+    expire: number;
+}
+
 class Auth {
     signInUri: string;
     signUpUri: string;
@@ -18,9 +23,11 @@ class Auth {
 
     verifyAccess = async (data: object): Promise<object> => await apiClient.post(this.verifyAccessUri, data);
 
-    setJWT = (jwt: object): void => localStorage.setItem('token', JSON.stringify(jwt));
+    setJWT = (jwt: JWT): void => localStorage.setItem('token', JSON.stringify(jwt));
 
-    getJWT = (): string => JSON.parse(localStorage.getItem('token') || '');
+    getJWT = (): JWT => JSON.parse(localStorage.getItem('token') || '{}');
+
+    isAuth = (): boolean => !this.getJWT().accessToken;
 }
 
 export const authAPI = new Auth();

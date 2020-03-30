@@ -9,6 +9,7 @@ import {
     CLEAR_ERRORS
 } from './types';
 import { authAPI } from '../../api/Auth';
+import { history } from '../../helpers/history';
 
 const authRequestAction = (): AuthTypes => ({
     type: AUTH_REQUEST
@@ -50,7 +51,7 @@ export const signInAction = (email: string) => (dispatch: any) => {
         })
         .catch((err) => {
             dispatch(authFailAction(err));
-            // todo: change this after change backend api
+            // FIXME: change this after change backend api
             dispatch(signUpAction(email));
         });
 };
@@ -63,6 +64,7 @@ export const verifyAccessAction = (creadentials: AuthCredentials) => (dispatch: 
         .then(({ data }: any) => {
             dispatch(authSuccessAction());
             authAPI.setJWT(data);
+            history.push('/trips');
         })
         .catch((err) => {
             dispatch(authFailAction(err));
