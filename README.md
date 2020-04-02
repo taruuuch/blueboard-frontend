@@ -4,11 +4,20 @@ Organize your trip with BlueBoard
 
 ## **How to run**
 
-We need to have docker installed previously.
+We need to have Node.js 12+ with npm v6.*+ installed previously:
+
+```code
+npm i -g yarn
+```
+
+and
 
 ```code
 yarn start
 ```
+
+### **In feature:**
+Docker: We need to have docker installed previously.
 
 ## **Reporting issues**
 
