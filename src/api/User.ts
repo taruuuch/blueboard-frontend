@@ -1,14 +1,6 @@
 import { apiClient } from './apiClient';
 import { PROFILE_URI } from '../configs/apiConfig';
-
-export interface UserProfileTypes {
-    status: number;
-    firstName: string;
-    lastName: string;
-    username: string;
-    email: string;
-    phone: string;
-}
+import { UserProfileTypes } from '../types/UserTypes';
 
 class User {
     profileUri: string;

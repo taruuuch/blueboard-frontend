@@ -1,9 +1,9 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
-import { baseURL, timeout } from '../configs/apiConfig';
+import { timeout } from '../configs/apiConfig';
 import { authAPI } from './Auth';
 
 const config: AxiosRequestConfig = {
-    baseURL,
+    //baseURL,
     timeout,
     headers: {
         'Content-Type': 'application/json',

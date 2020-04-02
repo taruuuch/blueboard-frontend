@@ -19,13 +19,13 @@ export const userReducer = (state = userState, action: UserTypes): User => {
             return {
                 ...state,
                 isLoading: false,
-                currentProfile: action.payload.currentProfile
+                currentProfile: action.payload
             };
         case USER_FAIL:
             return {
                 ...state,
                 isLoading: false,
-                errors: action.payload.errors
+                errors: action.payload
             };
         case CLEAR_ERRORS:
             return {

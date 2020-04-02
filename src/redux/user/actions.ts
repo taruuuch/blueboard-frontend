@@ -1,25 +1,15 @@
 import {
-    User,
     UserTypes,
     USER_REQUEST,
     USER_SUCCESS,
     USER_FAIL,
     CLEAR_ERRORS
 } from './types';
-import { userAPI, UserProfileTypes } from '../../api/User';
+import { userAPI } from '../../api/User';
+import { UserProfileTypes } from '../../types/UserTypes';
 
 const userRequestAction = (): UserTypes => ({
     type: USER_REQUEST
-});
-
-const userSuccessAction = (user: User): UserTypes => ({
-    type: USER_SUCCESS,
-    payload: user
-});
-
-const userFailtAction = (user: User): UserTypes => ({
-    type: USER_FAIL,
-    payload: user
 });
 
 export const clearErrorsAction = (): UserTypes => ({
@@ -32,10 +22,16 @@ export const getUserProfileAction = () => (dispatch: any) => {
     userAPI
         .get()
         .then(({ data }: any) => {
-            dispatch(userSuccessAction(data.profile));
+            dispatch({
+                type: USER_SUCCESS,
+                payload: data.profile
+            });
         })
-        .catch((err) => {
-            dispatch(userFailtAction(err));
+        .catch((err: any) => {
+            dispatch({
+                type: USER_FAIL,
+                payload: err
+            });
         });
 };
 
@@ -45,9 +41,15 @@ export const userUpdateAction = (user: UserProfileTypes) => (dispatch: any) => {
     userAPI
         .update(user)
         .then(({ data }: any) => {
-            dispatch(userSuccessAction(data.profile));
+            dispatch({
+                type: USER_SUCCESS,
+                payload: data.profile
+            });
         })
-        .catch((err) => {
-            dispatch(userFailtAction(err));
+        .catch((err: any) => {
+            dispatch({
+                type: USER_FAIL,
+                payload: err
+            });
         });
 };

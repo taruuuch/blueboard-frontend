@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Form, Button } from 'semantic-ui-react';
-import { AuthFormState, Creadentials } from '../../../containers/Auth/AuthTypes';
+import { AuthFormState, Creadentials } from '../../../types/AuthTypes';
 import './authform.scss';
 
 export const AuthForm = (props: AuthFormState): JSX.Element => {

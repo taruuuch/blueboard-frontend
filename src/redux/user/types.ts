@@ -1,29 +1,18 @@
-import { UserProfileTypes } from "../../api/User";
-
 export const USER_REQUEST = 'USER_REQUEST';
 export const USER_SUCCESS = 'USER_SUCCESS';
 export const USER_FAIL = 'USER_FAIL';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
 export interface User {
-    currentProfile: UserProfileTypes;
-    profile: UserProfileTypes;
+    currentProfile: object;
+    profile: object;
     isLoading: boolean;
     errors: object;
 }
 
-const profileObj: UserProfileTypes = {
-    status: 0,
-    firstName: '',
-    lastName: '',
-    username: '',
-    email: '',
-    phone: ''
-};
-
 export const userState: User = {
-    currentProfile: profileObj,
-    profile: profileObj,
+    currentProfile: {},
+    profile: {},
     isLoading: false,
     errors: {}
 };

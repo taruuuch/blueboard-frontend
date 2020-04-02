@@ -2,7 +2,7 @@ import React from 'react';
 import { AuthForm } from '../../components/ui/AuthForm/AuthForm';
 import { useDispatch, useSelector, TypedUseSelectorHook } from 'react-redux';
 import { signInAction, verifyAccessAction } from '../../redux/auth/actions';
-import { AuthState, Creadentials } from './AuthTypes';
+import { AuthState, Creadentials } from '../../types/AuthTypes';
 import { Grid } from 'semantic-ui-react';
 
 const typedUseSelector: TypedUseSelectorHook<AuthState> = useSelector;
