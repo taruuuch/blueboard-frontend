@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import {
-    Authentication,
+    IAuthenticationState,
     AuthTypes,
     AuthCredentials,
     AUTH_REQUEST,
@@ -19,7 +19,7 @@ const authSuccessAction = (): AuthTypes => ({
     type: AUTH_SUCCESS
 });
 
-const authFailAction = (auth: Authentication): AuthTypes => ({
+const authFailAction = (auth: IAuthenticationState): AuthTypes => ({
     type: AUTH_FAIL,
     payload: auth
 });

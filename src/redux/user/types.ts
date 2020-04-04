@@ -1,20 +1,21 @@
+import { UserProfileTypes } from './../../types/UserTypes';
 export const USER_REQUEST = 'USER_REQUEST';
 export const USER_SUCCESS = 'USER_SUCCESS';
 export const USER_FAIL = 'USER_FAIL';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
-export interface User {
-    currentProfile: object;
-    profile: object;
+export interface IUserState {
+    currentProfile: UserProfileTypes;
+    profile: UserProfileTypes;
     isLoading: boolean;
-    errors: object;
+    errors: Array<object>;
 }
 
-export const userState: User = {
-    currentProfile: {},
-    profile: {},
+export const userState: IUserState = {
+    currentProfile: {} as UserProfileTypes,
+    profile: {} as UserProfileTypes,
     isLoading: false,
-    errors: {}
+    errors: []
 };
 
 interface UserRequestAction {
@@ -23,12 +24,12 @@ interface UserRequestAction {
 
 interface UserSuccessAction {
     type: typeof USER_SUCCESS;
-    payload: User;
+    payload: IUserState;
 }
 
 interface UserFailAction {
     type: typeof USER_FAIL;
-    payload: User;
+    payload: IUserState;
 }
 
 interface ClearErrorsAction {

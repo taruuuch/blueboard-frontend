@@ -1,6 +1,6 @@
-import { Notifications, NotificationsTypes, GET_NOTIFICATION, SET_NOTIFICATION, CLEAR_NOTIFICATION } from './types';
+import { INotificationsState, NotificationsTypes, GET_NOTIFICATION, SET_NOTIFICATION, CLEAR_NOTIFICATION } from './types';
 
-export const setNotification = (notification: Notifications): NotificationsTypes => ({
+export const setNotification = (notification: INotificationsState): NotificationsTypes => ({
     type: SET_NOTIFICATION,
     payload: notification
 });

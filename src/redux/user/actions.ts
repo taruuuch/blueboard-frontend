@@ -21,10 +21,12 @@ export const getUserProfileAction = () => (dispatch: any) => {
 
     userAPI
         .get()
-        .then(({ data }: any) => {
+        .then(({ data: profile }: any) => {
             dispatch({
                 type: USER_SUCCESS,
-                payload: data.profile
+                payload: {
+                    profile
+                }
             });
         })
         .catch((err: any) => {
@@ -38,12 +40,16 @@ export const getUserProfileAction = () => (dispatch: any) => {
 export const userUpdateAction = (user: UserProfileTypes) => (dispatch: any) => {
     dispatch(userRequestAction());
 
+    delete user.status;
+
     userAPI
         .update(user)
-        .then(({ data }: any) => {
+        .then(({ data: profile }: any) => {
             dispatch({
                 type: USER_SUCCESS,
-                payload: data.profile
+                payload: {
+                    profile
+                }
             });
         })
         .catch((err: any) => {

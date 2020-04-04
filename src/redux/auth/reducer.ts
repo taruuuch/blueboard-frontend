@@ -1,5 +1,5 @@
 import {
-    Authentication,
+    IAuthenticationState,
     AuthTypes,
     authState,
     AUTH_REQUEST,
@@ -8,7 +8,7 @@ import {
     CLEAR_ERRORS
 } from './types';
 
-export const authReducer = (state = authState, action: AuthTypes): Authentication => {
+export const authReducer = (state = authState, action: AuthTypes): IAuthenticationState => {
     switch (action.type) {
         case AUTH_REQUEST:
             return {
@@ -31,7 +31,7 @@ export const authReducer = (state = authState, action: AuthTypes): Authenticatio
         case CLEAR_ERRORS:
             return {
                 ...state,
-                errors: {}
+                errors: []
             };
         default:
             return state;

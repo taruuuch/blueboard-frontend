@@ -1,6 +1,6 @@
 import {
     userState,
-    User,
+    IUserState,
     UserTypes,
     USER_REQUEST,
     USER_SUCCESS,
@@ -8,7 +8,7 @@ import {
     CLEAR_ERRORS
 } from './types';
 
-export const userReducer = (state = userState, action: UserTypes): User => {
+export const userReducer = (state = userState, action: UserTypes): IUserState => {
     switch (action.type) {
         case USER_REQUEST:
             return {
@@ -19,18 +19,18 @@ export const userReducer = (state = userState, action: UserTypes): User => {
             return {
                 ...state,
                 isLoading: false,
-                currentProfile: action.payload
+                currentProfile: action.payload.profile
             };
         case USER_FAIL:
             return {
                 ...state,
                 isLoading: false,
-                errors: action.payload
+                errors: action.payload.errors
             };
         case CLEAR_ERRORS:
             return {
                 ...state,
-                errors: {}
+                errors: []
             };
         default:
             return state;

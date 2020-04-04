@@ -9,19 +9,19 @@ enum NotificationType {
     'ERROR'
 }
 
-export interface Notifications {
-    message: string;
+export interface INotificationsState {
     type: NotificationType;
+    message: string;
 }
 
-export const notificationState: Notifications = {
+export const notificationState: INotificationsState = {
     type: NotificationType.DEFAULT,
     message: ''
 };
 
 interface SetNotificationAction {
     type: typeof SET_NOTIFICATION;
-    payload: Notifications;
+    payload: INotificationsState;
 }
 
 interface GetNotificationAction {

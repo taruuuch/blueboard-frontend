@@ -1,5 +1,5 @@
 import {
-    Notifications,
+    INotificationsState,
     NotificationsTypes,
     notificationState,
     GET_NOTIFICATION,
@@ -7,7 +7,7 @@ import {
     CLEAR_NOTIFICATION
 } from './types';
 
-export const notificationReducer = (state = notificationState, action: NotificationsTypes): Notifications => {
+export const notificationReducer = (state = notificationState, action: NotificationsTypes): INotificationsState => {
     switch (action.type) {
         case SET_NOTIFICATION:
             return {

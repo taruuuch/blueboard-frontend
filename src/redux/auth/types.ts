@@ -1,19 +1,20 @@
+import { authAPI } from './../../api/Auth';
 export const AUTH = 'AUTH';
 export const AUTH_REQUEST = 'AUTH_REQUEST';
 export const AUTH_SUCCESS = 'AUTH_SUCCESS';
 export const AUTH_FAIL = 'AUTH_FAIL';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
-export interface Authentication {
+export interface IAuthenticationState {
     isLoading: boolean;
     isAuthentication: boolean;
-    errors: object;
+    errors: Array<object>;
 }
 
-export const authState: Authentication = {
+export const authState: IAuthenticationState = {
     isLoading: false,
-    isAuthentication: false,
-    errors: {}
+    isAuthentication: !!authAPI.getJWT().accessToken,
+    errors: []
 };
 
 export interface AuthCredentials {
@@ -31,7 +32,7 @@ interface AuthSuccessAction {
 
 interface AuthFailAction {
     type: typeof AUTH_FAIL;
-    payload: Authentication;
+    payload: IAuthenticationState;
 }
 
 interface ClearErrorsAction {
