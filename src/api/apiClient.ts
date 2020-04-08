@@ -1,6 +1,7 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 import { baseURL, timeout } from '../configs/apiConfig';
 import { authAPI } from './Auth';
+import { history } from './../helpers/history';
 
 const config: AxiosRequestConfig = {
     baseURL,
@@ -23,5 +24,12 @@ apiClient.interceptors.request.use(
 
         return param;
     },
-    (error: Error) => Promise.reject(error)
+    (error) => {
+        if (error.response.status !== 401) {
+            return Promise.reject(error);
+        }
+
+        localStorage.removeItem('token');
+        history.push('/');
+    }
 );
