@@ -56,7 +56,13 @@ export const ProfileUpdateForm = (props: IProfileUpdateState): JSX.Element => {
                 value={userProfile.phone}
                 onChange={(e): void => setUserData({ ...userData, phone: e.target.value })}
             />
-            <Button onClick={() => handleUpdateProfile(userData)}>Update profile</Button>
+            <Button
+                color='blue'
+                floated='right'
+                onClick={() => handleUpdateProfile(userData)}
+            >
+                Update profile
+            </Button>
         </Form>
     );
 };

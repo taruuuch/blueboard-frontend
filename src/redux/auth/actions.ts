@@ -5,11 +5,13 @@ import {
     AuthCredentials,
     AUTH_REQUEST,
     AUTH_SUCCESS,
+    VERIFY_SUCCESS,
     AUTH_FAIL,
+    LOGOUT,
     CLEAR_ERRORS
 } from './types';
 import { authAPI } from '../../api/Auth';
-import { history } from '../../helpers/history';
+import { history } from './../../helpers/history';
 
 const authRequestAction = (): AuthTypes => ({
     type: AUTH_REQUEST
@@ -19,10 +21,25 @@ const authSuccessAction = (): AuthTypes => ({
     type: AUTH_SUCCESS
 });
 
+const verifySuccessAction = (): AuthTypes => ({
+    type: VERIFY_SUCCESS
+});
+
 const authFailAction = (auth: IAuthenticationState): AuthTypes => ({
     type: AUTH_FAIL,
     payload: auth
 });
+
+export const logoutAction = () => (dispatch: any) => {
+    dispatch(authRequestAction());
+
+    authAPI.removeJWT();
+    localStorage.removeItem('state');
+
+    dispatch({
+        type: LOGOUT
+    });
+};
 
 export const clearErrorsAction = (): AuthTypes => ({
     type: CLEAR_ERRORS
@@ -61,7 +78,7 @@ export const verifyAccessAction = (creadentials: AuthCredentials) => (dispatch: 
     authAPI
         .verifyAccess(creadentials)
         .then(({ data }: any) => {
-            dispatch(authSuccessAction());
+            dispatch(verifySuccessAction());
             authAPI.setJWT(data);
             history.push('/trips');
         })

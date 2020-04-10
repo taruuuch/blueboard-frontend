@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Button } from 'semantic-ui-react';
+import { Form, Button, Segment } from 'semantic-ui-react';
 import { AuthFormState, Creadentials } from '../../../types/AuthTypes';
 import './authform.scss';
 
@@ -29,35 +29,48 @@ export const AuthForm = (props: AuthFormState): JSX.Element => {
 
     return (
         <Form loading={isLoading}>
-            <Form.Input
-                fluid
-                error={!credentials.email}
-                name="email"
-                label="Email"
-                placeholder="example@blueboard.com"
-                onChange={(e): void => setCredentials({ ...credentials, email: e.target.value })}
-            />
-            {submitEmail && (
-                <>
-                    <Form.Input
-                        fluid
-                        error={!credentials.password}
-                        name="password"
-                        type="password"
-                        label="Password"
-                        placeholder="Temporary password..."
-                        onChange={(e): void => setCredentials({ ...credentials, password: e.target.value })}
-                    />
-                    <Form.Checkbox
-                        toggle
-                        defaultChecked={terms}
-                        label="I agree to the Terms and Conditions"
-                        onChange={(): void => setTerms(!terms)}
-                    />
-                    <Button onClick={handleSubmit}>Submit</Button>
-                </>
-            )}
-            {!submitEmail && <Button onClick={handleSendPassword}>Send password</Button>}
+            <Segment stacked>
+                <Form.Input
+                    fluid
+                    icon='user'
+                    iconPosition='left'
+                    // error={!credentials.email}
+                    name="email"
+                    label="Email"
+                    placeholder="example@blueboard.com"
+                    onChange={(e): void => setCredentials({ ...credentials, email: e.target.value })}
+                />
+                {submitEmail && (
+                    <>
+                        <Form.Input
+                            fluid
+                            icon='lock'
+                            iconPosition='left'
+                            error={!credentials.password}
+                            name="password"
+                            type="password"
+                            label="Password"
+                            placeholder="Temporary password..."
+                            onChange={(e): void => setCredentials({ ...credentials, password: e.target.value })}
+                        />
+                        <Form.Checkbox
+                            toggle
+                            defaultChecked={terms}
+                            label="I agree to the Terms and Conditions"
+                            onChange={(): void => setTerms(!terms)}
+                        />
+                        <Button
+                            color='blue'
+                            fluid
+                            size='large'
+                            onClick={handleSubmit}
+                        >
+                            Submit
+                        </Button>
+                    </>
+                )}
+                {!submitEmail && <Button color='blue' fluid onClick={handleSendPassword}>Send password</Button>}
+            </Segment>
         </Form>
     );
 };

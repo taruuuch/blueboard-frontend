@@ -1,5 +1,5 @@
 class State {
-    saveState = () => {
+    loadState = () => {
         try {
             const serializedState = localStorage.getItem('state')
             if (serializedState === null) {
@@ -11,7 +11,7 @@ class State {
         }
     }
 
-    loadState = (state: any) => {
+    saveState = (state: any) => {
         try {
             const serializedState = JSON.stringify(state)
             localStorage.setItem('state', serializedState)

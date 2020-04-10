@@ -1,20 +1,23 @@
 import React from 'react';
-import { Route, Redirect, RouteProps, RouteComponentProps } from 'react-router-dom';
+import { Route, Redirect, RouteProps, RouteComponentProps } from 'react-router';
 
 interface ProtectedRouteProps extends RouteProps {
     isAuthenticated: boolean;
     component: any;
+    layout: any;
 }
 
 export const ProtectedRoute = (props: ProtectedRouteProps): JSX.Element => {
-    const { component: Component, isAuthenticated, ...rest } = props;
+    const { component: Component, layout: Layout, isAuthenticated, ...rest } = props;
 
     return (
         <Route
             {...rest}
             render={(routeProps: RouteComponentProps): JSX.Element =>
                 isAuthenticated ? (
-                    <Component {...routeProps} />
+                    <Layout>
+                        <Component {...routeProps} />
+                    </Layout>
                 ) : (
                     <Redirect
                         to={{

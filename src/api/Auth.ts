@@ -27,7 +27,7 @@ class Auth {
 
     getJWT = (): JWT => JSON.parse(localStorage.getItem('token') || '{}');
 
-    isAuth = (): boolean => !this.getJWT().accessToken;
+    removeJWT = (): void => localStorage.removeItem('token');
 }
 
 export const authAPI = new Auth();

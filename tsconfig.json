@@ -27,7 +27,7 @@
         "isolatedModules": true,
         "sourceMap": true,
         "declaration": true,
-        "noUnusedLocals": true,
+        "noUnusedLocals": false,
         "noUnusedParameters": true,
         "experimentalDecorators": true,
         "noFallthroughCasesInSwitch": true,

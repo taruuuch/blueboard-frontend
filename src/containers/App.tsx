@@ -1,11 +1,19 @@
 import React from 'react';
 import { useRoutes } from '../routes';
-import { authAPI } from '../api/Auth';
 import { Container } from 'semantic-ui-react';
+import { useSelector, TypedUseSelectorHook } from 'react-redux';
+
+interface IAppState {
+    auth: {
+        isAuthenticated: boolean;
+    }
+}
+
+const typedUseSelector: TypedUseSelectorHook<IAppState> = useSelector;
 
 export const App = (): JSX.Element => {
-    const isAuthenticated = !authAPI.isAuth();
+    const isAuthenticated = typedUseSelector(state => state.auth.isAuthenticated);
     const routes = useRoutes(isAuthenticated);
 
-    return <Container>{routes}</Container>;
+    return <Container fluid>{routes}</Container>;
 };

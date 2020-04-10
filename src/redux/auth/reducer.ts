@@ -4,7 +4,9 @@ import {
     authState,
     AUTH_REQUEST,
     AUTH_SUCCESS,
+    VERIFY_SUCCESS,
     AUTH_FAIL,
+    LOGOUT,
     CLEAR_ERRORS
 } from './types';
 
@@ -18,15 +20,26 @@ export const authReducer = (state = authState, action: AuthTypes): IAuthenticati
         case AUTH_SUCCESS:
             return {
                 ...state,
+                isLoading: false
+            };
+        case VERIFY_SUCCESS:
+            return {
+                ...state,
                 isLoading: false,
-                isAuthentication: true
+                isAuthenticated: true
             };
         case AUTH_FAIL:
             return {
                 ...state,
                 isLoading: false,
-                isAuthentication: false,
+                isAuthenticated: false,
                 errors: action.payload.errors
+            };
+        case LOGOUT:
+            return {
+                ...state,
+                isLoading: false,
+                isAuthenticated: false,
             };
         case CLEAR_ERRORS:
             return {
