@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Redirect, RouteProps, RouteComponentProps } from 'react-router';
+import { Route, Redirect, RouteProps, RouteComponentProps } from 'react-router-dom';
 
 interface ProtectedRouteProps extends RouteProps {
     isAuthenticated: boolean;

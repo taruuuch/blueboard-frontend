@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, RouteProps, RouteComponentProps } from 'react-router';
+import { Route, RouteProps, RouteComponentProps } from 'react-router-dom';
 
 interface IRouteWrapperProps extends RouteProps {
     component: any;

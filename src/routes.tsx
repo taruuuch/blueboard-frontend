@@ -1,7 +1,7 @@
 import React from 'react';
 import { Trips } from './containers/Trips';
 import { Auth } from './containers/Auth';
-import { Switch, Route, Redirect } from 'react-router';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { ProtectedRoute } from './components/ui/Routes/PrivateRoute';
 import { RouteWrapper } from './components/ui/Routes/RouteWrapper';
 import { Profile } from './containers/Profile';
