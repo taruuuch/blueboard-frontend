@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Form, Button } from 'semantic-ui-react';
 import { UserProfileTypes } from '../../../types/UserTypes';
 import './profile.scss';
@@ -13,10 +13,6 @@ export const ProfileUpdateForm = (props: IProfileUpdateState): JSX.Element => {
     const { isLoading, handleUpdateProfile, userProfile } = props;
     const [userData, setUserData] = useState<UserProfileTypes>({} as UserProfileTypes);
 
-    useEffect(() => {
-        setUserData(userProfile);
-    }, [userProfile])
-
     return (
         <Form loading={isLoading}>
             <Form.Input
@@ -25,7 +21,7 @@ export const ProfileUpdateForm = (props: IProfileUpdateState): JSX.Element => {
                 name="email"
                 label="Email"
                 placeholder="example@blueboard.com"
-                value={userData.email}
+                value={userProfile.email}
                 onChange={(e): void => setUserData({ ...userData, email: e.target.value })}
             />
             <Form.Input
@@ -33,7 +29,7 @@ export const ProfileUpdateForm = (props: IProfileUpdateState): JSX.Element => {
                 name="firstname"
                 label="First name"
                 placeholder="e.g.: John"
-                value={userData.firstName}
+                value={userProfile.firstName}
                 onChange={(e): void => setUserData({ ...userData, firstName: e.target.value })}
             />
             <Form.Input
@@ -41,7 +37,7 @@ export const ProfileUpdateForm = (props: IProfileUpdateState): JSX.Element => {
                 name="lastname"
                 label="Last name"
                 placeholder="e.g.: Smith"
-                value={userData.lastName}
+                value={userProfile.lastName}
                 onChange={(e): void => setUserData({ ...userData, lastName: e.target.value })}
             />
             <Form.Input
@@ -49,7 +45,7 @@ export const ProfileUpdateForm = (props: IProfileUpdateState): JSX.Element => {
                 name="username"
                 label="Username"
                 placeholder="Enter your username..."
-                value={userData.username}
+                value={userProfile.username}
                 onChange={(e): void => setUserData({ ...userData, username: e.target.value })}
             />
             <Form.Input
@@ -57,7 +53,7 @@ export const ProfileUpdateForm = (props: IProfileUpdateState): JSX.Element => {
                 name="phone"
                 label="Phone"
                 placeholder="Enter your phone number..."
-                value={userData.phone}
+                value={userProfile.phone}
                 onChange={(e): void => setUserData({ ...userData, phone: e.target.value })}
             />
             <Button onClick={() => handleUpdateProfile(userData)}>Update profile</Button>

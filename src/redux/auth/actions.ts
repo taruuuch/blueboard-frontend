@@ -51,7 +51,6 @@ export const signInAction = (email: string) => (dispatch: any) => {
         })
         .catch((err) => {
             dispatch(authFailAction(err));
-            // FIXME: change this after change backend api
             dispatch(signUpAction(email));
         });
 };

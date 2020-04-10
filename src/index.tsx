@@ -8,12 +8,10 @@ import { App } from './containers/App';
 import './assets/style/main.scss';
 
 ReactDOM.render(
-    <React.StrictMode>
-        <Provider store={store}>
-            <Router history={history}>
-                <App />
-            </Router>
-        </Provider>
-    </React.StrictMode>,
+    <Provider store={store}>
+        <Router history={history}>
+            <App />
+        </Router>
+    </Provider>,
     document.getElementById('root')
 );

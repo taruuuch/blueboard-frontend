@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Grid, Loader } from 'semantic-ui-react';
 import { useDispatch, useSelector, TypedUseSelectorHook } from 'react-redux';
 import { UserProfileTypes } from '../../types/UserTypes';
@@ -18,18 +18,13 @@ export const Profile = (): JSX.Element => {
     const dispatch = useDispatch();
     const isLoading = typedUseSelector(state => state.user.isLoading);
     const profile = typedUseSelector(state => state.user.currentProfile);
-    const [userData, setUserData] = useState<UserProfileTypes>({} as UserProfileTypes);
 
     useEffect(() => {
         dispatch(getUserProfileAction());
     }, [dispatch]);
 
-    useEffect(() => {
-        setUserData(profile);
-    }, [profile]);
-
-    const handleSubmitUpdate = () => {
-        dispatch(userUpdateAction(userData));
+    const handleSubmitUpdate = (user) => {
+        dispatch(userUpdateAction(user));
     };
 
     if (isLoading) {
@@ -45,7 +40,7 @@ export const Profile = (): JSX.Element => {
                 <Grid.Column>
                     <ProfileUpdateForm
                         isLoading={isLoading}
-                        userProfile={userData}
+                        userProfile={profile}
                         handleUpdateProfile={handleSubmitUpdate}
                     />
                 </Grid.Column>
