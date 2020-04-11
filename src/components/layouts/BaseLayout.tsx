@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid } from 'semantic-ui-react';
-import { SidebarMenu } from '../ui/SidebarMenu';
+import { SidebarMenu } from '../ui/Sidebar/SidebarMenu';
 import { ILayout } from '../../types/LayoutTypes';
 
 export const BaseLayout = (props: ILayout): JSX.Element => {
@@ -8,6 +8,9 @@ export const BaseLayout = (props: ILayout): JSX.Element => {
 
     return (
         <div className="App">
+            <Grid padded className="mobile only">
+                <SidebarMenu />
+            </Grid>
             <Grid padded>
                 <Grid.Column
                     tablet={3}
