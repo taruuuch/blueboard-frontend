@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid } from 'semantic-ui-react';
-import { SidebarMenu } from '../ui/Sidebar/SidebarMenu';
-import { ILayout } from '../../types/LayoutTypes';
+import { SidebarMenu } from '../../ui/Sidebar/SidebarMenu';
+import { ILayout } from '../../../types/LayoutTypes';
 
 export const BaseLayout = (props: ILayout): JSX.Element => {
     const { children } = props;

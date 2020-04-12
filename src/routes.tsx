@@ -5,8 +5,8 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import { ProtectedRoute } from './components/ui/Routes/PrivateRoute';
 import { RouteWrapper } from './components/ui/Routes/RouteWrapper';
 import { Profile } from './containers/Profile';
-import { BaseLayout } from './components/layouts/BaseLayout';
-import { AuthLayout } from './components/layouts/AuthLayout';
+import { BaseLayout } from './components/layouts/BaseLayout/BaseLayout';
+import { AuthLayout } from './components/layouts/AuthLayout/AuthLayout';
 import { Logout } from './containers/Logout';
 
 export const useRoutes = (isAuthenticated: boolean): JSX.Element => {

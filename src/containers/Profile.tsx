@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector, TypedUseSelectorHook } from 'react-redux';
 import { UserProfileTypes } from '../types/UserTypes';
 import { getUserProfileAction, userUpdateAction } from '../redux/user/actions';
-import { ProfilePage } from '../components/pages/ProfilePage';
+import { ProfilePage } from '../components/pages/ProfilePage/ProfilePage';
 
 export interface IUserState {
     user: {
