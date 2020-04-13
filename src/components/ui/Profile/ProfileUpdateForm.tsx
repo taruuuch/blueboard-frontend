@@ -17,7 +17,6 @@ export const ProfileUpdateForm = (props: IProfileUpdateState): JSX.Element => {
         <Form loading={isLoading}>
             <Form.Input
                 fluid
-                disabled
                 name="email"
                 label="Email"
                 placeholder="example@blueboard.com"

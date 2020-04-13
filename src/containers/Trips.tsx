@@ -1,5 +1,5 @@
 import React from 'react';
-import { TripsPage } from '../components/pages/TripsPage/TripsPage';
+import { TripsPage } from '../components/pages/TripsPage';
 
 export const Trips = (): JSX.Element => {
     const trips = [

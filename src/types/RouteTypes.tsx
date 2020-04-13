@@ -3,5 +3,10 @@ export interface IRoutes {
     exact?: boolean;
     component: () => any;
     layout?: any;
-    restricted: boolean;
+    restricted?: boolean;
+};
+
+export interface IRenderRoutes {
+    routes: IRoutes[];
+    isAuthenticated: boolean;
 };

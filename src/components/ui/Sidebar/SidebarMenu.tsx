@@ -3,22 +3,36 @@ import { Menu, Divider, Header, Icon, Button } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
 import './sidebar.scss';
 
+const navbarLinks = [
+    {
+        to: '/trip/create',
+        icon: <Icon name='write square' />,
+        title: 'Create trip'
+    }, {
+        to: '/trips',
+        icon: <Icon name='plane' />,
+        title: 'Trips'
+    }, {
+        to: '/profile',
+        icon: <Icon name='id card' />,
+        title: 'Profile'
+    }, {
+        to: '/logout',
+        icon: <Icon name='ban' />,
+        title: 'Logout'
+    }
+];
+
 export const SidebarMenu = () => {
     const mobileSize = 768;
-    const [dropdown, setDropdown] = useState({ display: 'none' });
+    const [dropdown, setDropdown] = useState('none');
 
     const handleToggleDropdownMenu = () => {
-        const newState = {
-            display: ''
-        };
-
-        if (dropdown.display === 'none') {
-            newState.display = 'flex';
+        if (dropdown === 'none') {
+            setDropdown('flex');
         } else {
-            newState.display = 'none';
+            setDropdown('none');
         }
-
-        setDropdown(newState);
     }
 
     if (window.innerWidth < mobileSize) {
@@ -44,30 +58,17 @@ export const SidebarMenu = () => {
                     secondary
                     fluid
                     vertical
-                    style={dropdown}
+                    style={{ display: dropdown }}
                 >
-                    <Menu.Item
-                        as={NavLink}
-                        to='/trips'
-                    >
-                        <Icon name='plane' />
-                        Trips
-                    </Menu.Item>
-                    <Menu.Item
-                        as={NavLink}
-                        to='/profile'
-                    >
-                        <Icon name='id card' />
-                        Profile
-                    </Menu.Item>
-                    <Divider fitted />
-                    <Menu.Item
-                        as={NavLink}
-                        to='/logout'
-                    >
-                        <Icon name='ban' />
-                        Logout
-                    </Menu.Item>
+                    {navbarLinks.map(link => (
+                        <Menu.Item
+                            as={NavLink}
+                            to={link.to}
+                        >
+                            {link.icon}
+                            {link.title}
+                        </Menu.Item>
+                    ))}
                 </Menu>
             </Menu>
         );
@@ -79,28 +80,15 @@ export const SidebarMenu = () => {
                 BlueBoard
             </Header>
             <Divider />
-            <Menu.Item
-                as={NavLink}
-                to='/trips'
-            >
-                <Icon name='plane' />
-                Trips
-            </Menu.Item>
-            <Divider />
-            <Menu.Item
-                as={NavLink}
-                to='/profile'
-            >
-                <Icon name='id card' />
-                Profile
-            </Menu.Item>
-            <Menu.Item
-                as={NavLink}
-                to='/logout'
-            >
-                <Icon name='ban' />
-                Logout
-            </Menu.Item>
+            {navbarLinks.map(link => (
+                <Menu.Item
+                    as={NavLink}
+                    to={link.to}
+                >
+                    {link.icon}
+                    {link.title}
+                </Menu.Item>
+            ))}
         </Menu>
     );
 };

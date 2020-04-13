@@ -5,6 +5,7 @@ import { BaseLayout } from './components/layouts/BaseLayout/BaseLayout';
 import { AuthLayout } from './components/layouts/AuthLayout/AuthLayout';
 import { Logout } from './containers/Logout';
 import { IRoutes } from './types/RouteTypes';
+import { Trip } from './containers/Trip';
 
 export const routes: IRoutes[] = [
     {
@@ -15,17 +16,31 @@ export const routes: IRoutes[] = [
         restricted: false
     }, {
         path: '/profile',
+        exact: true,
         component: Profile,
         layout: BaseLayout,
         restricted: true
     }, {
         path: '/trips',
+        exact: true,
         component: Trips,
+        layout: BaseLayout,
+        restricted: true
+    }, {
+        path: '/trip/create',
+        exact: true,
+        component: Trips,
+        layout: BaseLayout,
+        restricted: true
+    }, {
+        path: '/trip/:id',
+        component: Trip,
         layout: BaseLayout,
         restricted: true
     }, {
         path: '/logout',
         component: Logout,
+        layout: AuthLayout,
         restricted: true
     }
 ];

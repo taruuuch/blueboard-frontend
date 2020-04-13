@@ -1,11 +1,6 @@
 import React from 'react';
 import { Switch, Route, Redirect, RouteComponentProps } from 'react-router-dom';
-import { IRoutes } from '../../types/RouteTypes';
-
-interface IRenderRoutes {
-    routes: IRoutes[];
-    isAuthenticated: boolean;
-};
+import { IRenderRoutes } from '../../types/RouteTypes';
 
 export const renderRoutes = (props: IRenderRoutes) => {
     const { routes, isAuthenticated } = props;

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Grid, Header } from 'semantic-ui-react';
-import { TripsList } from '../../ui/Trips/TripsList';
-import './tripPage.scss';
+import { TripsList } from '../ui/Trips/TripsList';
 
 export const TripsPage = (params): JSX.Element => {
     const { trips } = params;

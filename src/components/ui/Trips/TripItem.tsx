@@ -1,5 +1,6 @@
 import React from 'react';
 import { Grid, Card } from 'semantic-ui-react';
+import tripBackground from '../../../assets/img/sign_back.jpg';
 import dayjs from 'dayjs';
 import './trips.scss';
 
@@ -9,9 +10,10 @@ export const TripItem = (params): JSX.Element => {
     return (
         <Card
             key={index}
-            className='trips__item'
             color='green'
-            href='#page'
+            href='/trip/123'
+            className='trips__item'
+            style={{ backgroundImage: `url(${tripBackground})` }}
         >
             <Card.Content>
                 <Card.Header content={trip.title} />

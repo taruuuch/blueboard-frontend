@@ -1,0 +1,21 @@
+#content {
+    padding-top: 12px;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    h1 {
+        font-size: 36px;
+    }
+
+    .ui {
+        &.dividing.header {
+            width: 100%;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    #content {
+        padding-top: 60px;
+    }
+}
