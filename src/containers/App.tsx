@@ -1,5 +1,6 @@
 import React from 'react';
-import { useRoutes } from '../routes';
+import { routes } from '../routes';
+import { renderRoutes } from '../components/ui/renderRoutes'
 import { Container } from 'semantic-ui-react';
 import { useSelector, TypedUseSelectorHook } from 'react-redux';
 
@@ -13,7 +14,7 @@ const typedUseSelector: TypedUseSelectorHook<IAppState> = useSelector;
 
 export const App = (): JSX.Element => {
     const isAuthenticated = typedUseSelector(state => state.auth.isAuthenticated);
-    const routes = useRoutes(isAuthenticated);
+    const Routes = renderRoutes({ routes, isAuthenticated });
 
-    return <Container fluid>{routes}</Container>;
+    return <Container fluid>{Routes}</Container>;
 };
