@@ -24,12 +24,14 @@ apiClient.interceptors.request.use(
 
         return param;
     },
-    (error) => {
-        if (error.response.status !== 401) {
-            return Promise.reject(error);
-        }
+    (error) => Promise.reject(error)
+);
 
+apiClient.interceptors.response.use(undefined, (error) => {
+    if (error.response.status === 401) {
         localStorage.removeItem('token');
         history.push('/');
+        return;
     }
-);
+    return Promise.reject(error.response.data);
+});
