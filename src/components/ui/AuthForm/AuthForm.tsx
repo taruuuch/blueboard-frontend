@@ -27,6 +27,11 @@ export const AuthForm = (props: AuthFormState): JSX.Element => {
         handleVerify(credentials);
     };
 
+    const handleEmailChange = (event: any): void => {
+        setCredentials({ ...credentials, email: event.target.value });
+        setSubmitEmail(false);
+    }
+
     return (
         <Form loading={isLoading}>
             <Segment stacked>
@@ -38,7 +43,7 @@ export const AuthForm = (props: AuthFormState): JSX.Element => {
                     name="email"
                     label="Email"
                     placeholder="example@blueboard.com"
-                    onChange={(e): void => setCredentials({ ...credentials, email: e.target.value })}
+                    onChange={handleEmailChange}
                 />
                 {submitEmail && (
                     <>
