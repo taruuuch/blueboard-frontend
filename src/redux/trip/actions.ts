@@ -3,6 +3,7 @@ import {
     TripTypes,
     TRIP_REQUEST,
     TRIP_SUCCESS,
+    TRIPS_SUCCESS,
     TRIP_FAIL,
     CLEAR_ERRORS
 } from './types';
@@ -23,14 +24,16 @@ export const getTripAction = (id: number) => (dispatch: any) => {
             dispatch({
                 type: TRIP_SUCCESS,
                 payload: {
-                    trip
+                    currentTrip: trip
                 }
             });
         })
         .catch((err: any) => {
             dispatch({
                 type: TRIP_FAIL,
-                payload: err
+                payload: {
+                    errors: err
+                }
             });
         });
 };
@@ -41,8 +44,9 @@ export const getAllTripsAction = () => (dispatch: any) => {
     tripAPI
         .getAll()
         .then(({ data: trips }: any) => {
+            console.log(trips);
             dispatch({
-                type: TRIP_SUCCESS,
+                type: TRIPS_SUCCESS,
                 payload: {
                     trips
                 }
@@ -51,7 +55,9 @@ export const getAllTripsAction = () => (dispatch: any) => {
         .catch((err: any) => {
             dispatch({
                 type: TRIP_FAIL,
-                payload: err
+                payload: {
+                    errors: err
+                }
             });
         });
 };
@@ -73,7 +79,9 @@ export const createTripAction = (trip: ITrip) => (dispatch: any) => {
         .catch((err: any) => {
             dispatch({
                 type: TRIP_FAIL,
-                payload: err
+                payload: {
+                    errors: err
+                }
             });
         });
 };
@@ -95,7 +103,9 @@ export const updateTripAction = (trip: ITrip) => (dispatch: any) => {
         .catch((err: any) => {
             dispatch({
                 type: TRIP_FAIL,
-                payload: err
+                payload: {
+                    errors: err
+                }
             });
         });
 };

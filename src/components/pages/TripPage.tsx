@@ -11,7 +11,7 @@ export const TripPage = (params): JSX.Element => {
         <Grid className='trip'>
              <Grid.Row style={{ backgroundImage: `url(${tripBack})`}} className='trip__header'>
                 <Header as='h3' className='trip__header-title'>
-                    {trip.title}
+                    {trip.name}
                 </Header>
             </Grid.Row>
             <TripInfo {...params} />

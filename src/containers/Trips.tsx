@@ -1,39 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { TripsPage } from '../components/pages/TripsPage';
+import { ITripState } from '../types/TripTypes';
+import { useSelector, TypedUseSelectorHook, useDispatch } from 'react-redux';
+import { getAllTripsAction } from '../redux/trip/actions';
+
+const typedUseSelector: TypedUseSelectorHook<ITripState> = useSelector;
 
 export const Trips = (): JSX.Element => {
-    const trips = [
-        {
-            title: 'Odit repellendus consequuntur',
-            tripStartDate: 'Tue Sep 15 2020 10:12:57 GMT+0300 (Eastern European Summer Time)',
-            tripEndDate: 'Thu Sep 24 2020 15:13:25 GMT+0300 (Eastern European Summer Time)',
-            createdBy: 'Fidel_Herman40'
-        },
-        {
-            title: 'Odit repellendus consequuntur',
-            tripStartDate: 'Tue Sep 15 2020 10:12:57 GMT+0300 (Eastern European Summer Time)',
-            tripEndDate: 'Thu Sep 24 2020 15:13:25 GMT+0300 (Eastern European Summer Time)',
-            createdBy: 'Fidel_Herman40'
-        },
-        {
-            title: 'Odit repellendus consequuntur',
-            tripStartDate: 'Tue Sep 15 2020 10:12:57 GMT+0300 (Eastern European Summer Time)',
-            tripEndDate: 'Thu Sep 24 2020 15:13:25 GMT+0300 (Eastern European Summer Time)',
-            createdBy: 'Fidel_Herman40'
-        },
-        {
-            title: 'Odit repellendus consequuntur',
-            tripStartDate: 'Tue Sep 15 2020 10:12:57 GMT+0300 (Eastern European Summer Time)',
-            tripEndDate: 'Thu Sep 24 2020 15:13:25 GMT+0300 (Eastern European Summer Time)',
-            createdBy: 'Fidel_Herman40'
-        },
-        {
-            title: 'Odit repellendus consequuntur',
-            tripStartDate: 'Tue Sep 15 2020 10:12:57 GMT+0300 (Eastern European Summer Time)',
-            tripEndDate: 'Thu Sep 24 2020 15:13:25 GMT+0300 (Eastern European Summer Time)',
-            createdBy: 'Fidel_Herman40'
-        }
-    ];
+    const dispatch = useDispatch();
+    const isLoading = typedUseSelector(state => state.trip.isLoading);
+    const trips = typedUseSelector(state => state.trip.trips);
 
-    return <TripsPage trips={trips} />;
+    useEffect(() => {
+        dispatch(getAllTripsAction());
+    }, [dispatch]);
+
+    return <TripsPage trips={trips} isLoading={isLoading} />;
 };

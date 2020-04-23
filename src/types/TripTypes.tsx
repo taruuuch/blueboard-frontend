@@ -5,3 +5,11 @@ export interface ITrip {
     startDate: Date;
     endDate: Date;
 }
+
+export interface ITripState {
+    trip: {
+        currentTrip: ITrip;
+        trips: ITrip[];
+        isLoading: boolean;
+    };
+}

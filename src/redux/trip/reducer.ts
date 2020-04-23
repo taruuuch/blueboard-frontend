@@ -4,11 +4,12 @@ import {
     tripState,
     TRIP_REQUEST,
     TRIP_SUCCESS,
+    TRIPS_SUCCESS,
     TRIP_FAIL,
     CLEAR_ERRORS
 } from './types';
 
-export const authReducer = (state = tripState, action: TripTypes): ITripState => {
+export const tripReducer = (state = tripState, action: TripTypes): ITripState => {
     switch (action.type) {
         case TRIP_REQUEST:
             return {
@@ -18,12 +19,20 @@ export const authReducer = (state = tripState, action: TripTypes): ITripState =>
         case TRIP_SUCCESS:
             return {
                 ...state,
-                isLoading: false
+                isLoading: false,
+                currentTrip: action.payload.currentTrip
+            };
+        case TRIPS_SUCCESS:
+            return {
+                ...state,
+                isLoading: false,
+                trips: action.payload.trips
             };
         case TRIP_FAIL:
             return {
                 ...state,
-                isLoading: false
+                isLoading: false,
+                errors: action.payload.errors
             };
         case CLEAR_ERRORS:
             return {

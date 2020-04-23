@@ -1,5 +1,6 @@
 import React from 'react';
-import { Grid } from 'semantic-ui-react';
+import { Grid, Container } from 'semantic-ui-react';
+import dayjs from 'dayjs';
 import './trip.scss';
 
 export const TripInfo = (params): JSX.Element => {
@@ -7,10 +8,9 @@ export const TripInfo = (params): JSX.Element => {
 
     return (
         <Grid.Row>
-            <p>{trip.createdBy}</p>
-            <p>{trip.createdBy}</p>
-            <p>{trip.createdBy}</p>
-            <p>{trip.createdBy}</p>
+            <Container as='div'>{trip.description}</Container>
+            <Container as='div'>{dayjs(trip.startDate).format('DD-MM-YYYY HH:mm')}</Container>
+            <Container as='div'>{dayjs(trip.endDate).format('DD-MM-YYYY HH:mm')}</Container>
         </Grid.Row>
     );
 };

@@ -1,17 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { TripPage } from '../components/pages/TripPage';
 import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector, TypedUseSelectorHook } from 'react-redux';
+import { getTripAction } from '../redux/trip/actions';
+import { ITripState } from '../types/TripTypes';
+
+const typedUseSelector: TypedUseSelectorHook<ITripState> = useSelector;
 
 export const Trip = (): JSX.Element => {
     const { id: tripId } = useParams();
+    const dispatch = useDispatch();
+    const isLoading = typedUseSelector(state => state.trip.isLoading);
+    const trip = typedUseSelector(state => state.trip.currentTrip);
 
-    const trip = {
-        title: 'Odit repellendus consequuntur',
-        description: 'Dolor voluptate iste similique. Et ex reprehenderit vel non consequuntur est delectus. At laudantium non. Consequatur sit et maiores consequatur quia.',
-        tripStartDate: 'Tue Sep 15 2020 10:12:57 GMT+0300 (Eastern European Summer Time)',
-        tripEndDate: 'Thu Sep 24 2020 15:13:25 GMT+0300 (Eastern European Summer Time)',
-        createdBy: 'Fidel_Herman40'
-    };
+    useEffect(() => {
+        dispatch(getTripAction(Number(tripId)));
+    }, [dispatch, tripId]);
 
-    return <TripPage trip={trip} />;
+    return <TripPage trip={trip} isLoading={isLoading} />;
 };

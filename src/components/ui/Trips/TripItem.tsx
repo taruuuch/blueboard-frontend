@@ -5,25 +5,26 @@ import dayjs from 'dayjs';
 import './trips.scss';
 
 export const TripItem = (params): JSX.Element => {
-    const { trip, index } = params;
+    const { trip } = params;
+    const href = `/trip/${trip.id}`;
 
     return (
         <Card
-            key={index}
+            key={trip.id}
             color='green'
-            href='/trip/123'
+            href={href}
             className='trips__item'
             style={{ backgroundImage: `url(${tripBackground})` }}
         >
             <Card.Content>
-                <Card.Header content={trip.title} />
+                <Card.Header content={trip.name} />
                 <Card.Meta content={`Create by: ${trip.createdBy}`} />
             </Card.Content>
             <Card.Content extra>
                 <Grid>
                     <Grid.Row>
-                        <Grid.Column width={8}>{dayjs(trip.tripStartDate).format('DD-MM-YYYY HH:mm')}</Grid.Column>
-                        <Grid.Column width={8}>{dayjs(trip.tripEndDate).format('DD-MM-YYYY HH:mm')}</Grid.Column>
+                        <Grid.Column width={8}>{dayjs(trip.startDate).format('DD-MM-YYYY HH:mm')}</Grid.Column>
+                        <Grid.Column width={8}>{dayjs(trip.endDate).format('DD-MM-YYYY HH:mm')}</Grid.Column>
                     </Grid.Row>
                 </Grid>
             </Card.Content>

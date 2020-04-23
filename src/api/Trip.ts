@@ -13,9 +13,9 @@ class Trip {
 
     getAll = async (): Promise<ITrip[]> => await apiClient.get(this.tripUri);
 
-    create = async (trip: ITrip): Promise<ITrip> => await apiClient.post(this.tripUri);
+    create = async (trip: ITrip): Promise<ITrip> => await apiClient.post(this.tripUri, trip);
 
-    update = async (trip: ITrip): Promise<ITrip> => await apiClient.put(this.tripUri);
+    update = async (trip: ITrip): Promise<ITrip> => await apiClient.put(this.tripUri, trip);
 }
 
 export const tripAPI = new Trip();
