@@ -3,14 +3,19 @@ import { Grid, Card } from 'semantic-ui-react';
 import tripBackground from '../../../assets/img/sign_back.jpg';
 import dayjs from 'dayjs';
 import './trips.scss';
+import { ITrip } from '../../../types/TripTypes';
 
-export const TripItem = (params): JSX.Element => {
+interface ITripItem {
+    trip: ITrip;
+};
+
+export const TripItem = (params: ITripItem): JSX.Element => {
     const { trip } = params;
     const href = `/trip/${trip.id}`;
 
     return (
         <Card
-            key={trip.id}
+            key={Number(trip.id)}
             color='green'
             href={href}
             className='trips__item'
@@ -18,7 +23,7 @@ export const TripItem = (params): JSX.Element => {
         >
             <Card.Content>
                 <Card.Header content={trip.name} />
-                <Card.Meta content={`Create by: ${trip.createdBy}`} />
+                {/* <Card.Meta content={`Create by: ${trip.createdBy}`} /> */}
             </Card.Content>
             <Card.Content extra>
                 <Grid>

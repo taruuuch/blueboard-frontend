@@ -1,15 +1,20 @@
 import React from 'react';
-import { Card } from 'semantic-ui-react';
+import { Card, Loader } from 'semantic-ui-react';
 import { TripItem } from './TripItem';
 import './trips.scss';
 import { ITrip } from '../../../types/TripTypes';
 
 interface ITripList {
     trips: ITrip[];
+    isLoading: boolean;
 };
 
 export const TripsList = (params: ITripList): JSX.Element => {
-    const { trips } = params;
+    const { trips, isLoading } = params;
+
+    if (isLoading) {
+        return <Loader />
+    }
 
     return (
         <>

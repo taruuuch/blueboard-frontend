@@ -1,9 +1,15 @@
 import React from 'react';
 import { Grid, Header } from 'semantic-ui-react';
 import { TripsList } from '../ui/Trips/TripsList';
+import { ITrip } from '../../types/TripTypes';
 
-export const TripsPage = (params): JSX.Element => {
-    const { trips } = params;
+interface ITripsPage {
+    trips: ITrip[];
+    isLoading: boolean;
+};
+
+export const TripsPage = (params: ITripsPage): JSX.Element => {
+    const { trips, isLoading } = params;
 
     return (
         <Grid padded>
@@ -13,23 +19,7 @@ export const TripsPage = (params): JSX.Element => {
                 </Header>
             </Grid.Row>
             <Grid.Row>
-                <TripsList trips={trips} />
-            </Grid.Row>
-            <Grid.Row>
-                <Header dividing as='h3'>
-                    Feature trips
-                </Header>
-            </Grid.Row>
-            <Grid.Row>
-                <TripsList trips={trips} />
-            </Grid.Row>
-            <Grid.Row>
-                <Header dividing as='h3'>
-                    Past trips
-                </Header>
-            </Grid.Row>
-            <Grid.Row>
-                <TripsList trips={trips} />
+                <TripsList trips={trips} isLoading={isLoading} />
             </Grid.Row>
         </Grid>
     );

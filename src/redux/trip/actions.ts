@@ -44,7 +44,6 @@ export const getAllTripsAction = () => (dispatch: any) => {
     tripAPI
         .getAll()
         .then(({ data: trips }: any) => {
-            console.log(trips);
             dispatch({
                 type: TRIPS_SUCCESS,
                 payload: {

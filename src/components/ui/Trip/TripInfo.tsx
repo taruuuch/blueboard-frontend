@@ -8,9 +8,9 @@ export const TripInfo = (params): JSX.Element => {
 
     return (
         <Grid.Row>
-            <Container as='div'>{trip.description}</Container>
-            <Container as='div'>{dayjs(trip.startDate).format('DD-MM-YYYY HH:mm')}</Container>
-            <Container as='div'>{dayjs(trip.endDate).format('DD-MM-YYYY HH:mm')}</Container>
+            <Container fluid as='div'>{trip.description}</Container>
+            <Container fluid as='div'>{dayjs(trip.startDate).format('DD-MM-YYYY HH:mm')}</Container>
+            <Container fluid as='div'>{dayjs(trip.endDate).format('DD-MM-YYYY HH:mm')}</Container>
         </Grid.Row>
     );
 };
