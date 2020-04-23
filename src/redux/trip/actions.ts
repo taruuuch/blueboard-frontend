@@ -73,7 +73,7 @@ export const createTripAction = (trip: ITrip) => (dispatch: any) => {
                     trip
                 }
             });
-            history.push(`/trip/${trip.id}`);
+            history.push('/trips');
         })
         .catch((err: any) => {
             dispatch({
@@ -97,7 +97,7 @@ export const updateTripAction = (trip: ITrip) => (dispatch: any) => {
                     trip
                 }
             });
-            history.push(`/trip/${trip.id}`);
+            history.push('/trips');
         })
         .catch((err: any) => {
             dispatch({

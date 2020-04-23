@@ -1,9 +1,9 @@
 export interface ITrip {
-    id: BigInt;
+    id: Number;
     name: string;
     description: string;
-    startDate: Date;
-    endDate: Date;
+    startDate: string;
+    endDate: string;
 }
 
 export interface ITripState {

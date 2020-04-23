@@ -6,6 +6,7 @@ import { AuthLayout } from './components/layouts/AuthLayout/AuthLayout';
 import { Logout } from './containers/Logout';
 import { IRoutes } from './types/RouteTypes';
 import { Trip } from './containers/Trip';
+import { CreateTrip } from './containers/CreateTrip';
 
 export const routes: IRoutes[] = [
     {
@@ -29,7 +30,7 @@ export const routes: IRoutes[] = [
     }, {
         path: '/trip/create',
         exact: true,
-        component: Trips,
+        component: CreateTrip,
         layout: BaseLayout,
         restricted: true
     }, {
